@@ -1,7 +1,15 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => res.send("Hello, world!"));
+const authorRouter = require("./routes/authorRouter.js");
+
+const indexRouter = require("./routes/indexRouter.js");
+
+app.use("/authors", authorRouter);
+
+app.use("/", indexRouter);
+// app.get("/", (req, res) => res.send("Hello, world!"));
+
 
 const PORT = 3000;
 app.listen(PORT, () => {
